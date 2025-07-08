@@ -1,70 +1,70 @@
-**Help Info that print before REPL**
-Welcome to use calc 2.0, a calc that you could define a function
-() {} [] are equals
-binary operator are left associative operator and have the following precedence(higher up):
-        ^(pow)
-        * /
-        + -
-        < <= > >= = /=(no equals)
-        \/(or) /\(and)
-        =>(see below)
-        |(see below)
-usage: 1 + 2 (note: binary operator should wrap by space)
-L => R when L is bool true return R's value, or L is bool false return void(a special value)
-L | R when L is void, return R's value or else return L's value
-single operator are right associative operator:
-         ^(not) + -
-usage: -1 (note: single operator should following expr immediately, without space)
-number will be parsed by strtold(C function) but you can not use A-Z in number, like 0xAZ is not allowed, use 0xaz instead
-special number:
-        I(imaginary unit)
-        NAN(not a number,special long double value)
-        INF(infinity,special long double value)
-        PI
-        E
-define function:
-        foo(x,y)=expr
-        foo is function reference name which consist by a-z
-        x and y are params(note: 0-26 params are supported, but the params should by single alpha a-z)
-        call foo:
-                foo(0,1)
-        you can pass foo into param x, so that:
-                x(2,3)
-        is equal to
-                foo(2,3)
-        foo(x,y)=expr
-                ^this = has not space around
-        function define is a statement,so you can't define in expr
-        you can redefine any function in any time,include init function.
-        however,redefine is visible for all function:
-                #1 foo(x)=x
-                #2 goo(x)=foo(x)
-                #3 foo(x)=x + 1
-                call #2 goo will call #3 foo, not #1 foo
-function reference name and params are variable
-        for variable v, v is function reference name iff v is not param
-
-[Define] sin(a)=? as init function
-[Define] cos(a)=? as init function
-[Define] tan(a)=? as init function
-[Define] asin(a)=? as init function
-[Define] acos(a)=? as init function
-[Define] atan(a)=? as init function
-[Define] sinh(a)=? as init function
-[Define] cosh(a)=? as init function
-[Define] tanh(a)=? as init function
-[Define] asinh(a)=? as init function
-[Define] acosh(a)=? as init function
-[Define] atanh(a)=? as init function
-[Define] exp(a)=? as init function
-[Define] log(a)=? as init function
-[Define] sqrt(a)=? as init function
-[Define] real(a)=? as init function
-[Define] imag(a)=? as init function
-[Define] abs(a)=? as init function
-[Define] arg(a)=? as init function
-[Define] conj(a)=? as init function
-[Define] proj(a)=? as init function
-[Define] floor(a)=? as init function
-[Define] ceil(a)=? as init function
-[Define] round(a)=? as init function
+# Help Info that print before REPL
+Welcome&nbsp;to&nbsp;use&nbsp;calc&nbsp;2.0,&nbsp;a&nbsp;calc&nbsp;that&nbsp;you&nbsp;could&nbsp;define&nbsp;a&nbsp;function<br>
+()&nbsp;{}&nbsp;[]&nbsp;are&nbsp;equals<br>
+binary&nbsp;operator&nbsp;are&nbsp;left&nbsp;associative&nbsp;operator&nbsp;and&nbsp;have&nbsp;the&nbsp;following&nbsp;precedence(higher&nbsp;up):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^(pow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<&nbsp;<=&nbsp;>&nbsp;>=&nbsp;=&nbsp;/=(no&nbsp;equals)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/(or)&nbsp;/(and)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=>(see&nbsp;below)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|(see&nbsp;below)<br>
+usage:&nbsp;1&nbsp;+&nbsp;2&nbsp;(note:&nbsp;binary&nbsp;operator&nbsp;should&nbsp;wrap&nbsp;by&nbsp;space)<br>
+L&nbsp;=>&nbsp;R&nbsp;when&nbsp;L&nbsp;is&nbsp;bool&nbsp;true&nbsp;return&nbsp;R's&nbsp;value,&nbsp;or&nbsp;L&nbsp;is&nbsp;bool&nbsp;false&nbsp;return&nbsp;void(a&nbsp;special&nbsp;value)<br>
+L&nbsp;|&nbsp;R&nbsp;when&nbsp;L&nbsp;is&nbsp;void,&nbsp;return&nbsp;R's&nbsp;value&nbsp;or&nbsp;else&nbsp;return&nbsp;L's&nbsp;value<br>
+single&nbsp;operator&nbsp;are&nbsp;right&nbsp;associative&nbsp;operator:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^(not)&nbsp;+&nbsp;-<br>
+usage:&nbsp;-1&nbsp;(note:&nbsp;single&nbsp;operator&nbsp;should&nbsp;following&nbsp;expr&nbsp;immediately,&nbsp;without&nbsp;space)<br>
+number&nbsp;will&nbsp;be&nbsp;parsed&nbsp;by&nbsp;strtold(C&nbsp;function)&nbsp;but&nbsp;you&nbsp;can&nbsp;not&nbsp;use&nbsp;A-Z&nbsp;in&nbsp;number,&nbsp;like&nbsp;0xAZ&nbsp;is&nbsp;not&nbsp;allowed,&nbsp;use&nbsp;0xaz&nbsp;instead<br>
+special&nbsp;number:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I(imaginary&nbsp;unit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAN(not&nbsp;a&nbsp;number,special&nbsp;long&nbsp;double&nbsp;value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INF(infinity,special&nbsp;long&nbsp;double&nbsp;value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PI<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E<br>
+define&nbsp;function:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo(x,y)=expr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;is&nbsp;function&nbsp;reference&nbsp;name&nbsp;which&nbsp;consist&nbsp;by&nbsp;a-z<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;params(note:&nbsp;0-26&nbsp;params&nbsp;are&nbsp;supported,&nbsp;but&nbsp;the&nbsp;params&nbsp;should&nbsp;by&nbsp;single&nbsp;alpha&nbsp;a-z)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call&nbsp;foo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo(0,1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you&nbsp;can&nbsp;pass&nbsp;foo&nbsp;into&nbsp;param&nbsp;x,&nbsp;so&nbsp;that:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x(2,3)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;equal&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo(2,3)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo(x,y)=expr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^this&nbsp;=&nbsp;has&nbsp;not&nbsp;space&nbsp;around<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;define&nbsp;is&nbsp;a&nbsp;statement,so&nbsp;you&nbsp;can't&nbsp;define&nbsp;in&nbsp;expr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you&nbsp;can&nbsp;redefine&nbsp;any&nbsp;function&nbsp;in&nbsp;any&nbsp;time,include&nbsp;init&nbsp;function.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;however,redefine&nbsp;is&nbsp;visible&nbsp;for&nbsp;all&nbsp;function:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1&nbsp;foo(x)=x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#2&nbsp;goo(x)=foo(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#3&nbsp;foo(x)=x&nbsp;+&nbsp;1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call&nbsp;#2&nbsp;goo&nbsp;will&nbsp;call&nbsp;#3&nbsp;foo,&nbsp;not&nbsp;#1&nbsp;foo<br>
+function&nbsp;reference&nbsp;name&nbsp;and&nbsp;params&nbsp;are&nbsp;variable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;variable&nbsp;v,&nbsp;v&nbsp;is&nbsp;function&nbsp;reference&nbsp;name&nbsp;iff&nbsp;v&nbsp;is&nbsp;not&nbsp;param<br>
+<br>
+[Define]&nbsp;sin(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;cos(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;tan(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;asin(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;acos(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;atan(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;sinh(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;cosh(a)=?&nbsp;as&nbsp;init&nbsp;function<br>,
+[Define]&nbsp;tanh(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;asinh(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;acosh(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;atanh(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;exp(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;log(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;sqrt(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;real(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;imag(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;abs(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;arg(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;conj(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;proj(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;floor(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;ceil(a)=?&nbsp;as&nbsp;init&nbsp;function<br>
+[Define]&nbsp;round(a)=?&nbsp;as&nbsp;init&nbsp;function
