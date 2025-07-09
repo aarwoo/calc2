@@ -1,5 +1,5 @@
 # How to Complied
-- You must use standard <font style="color:red;">**C23**</font> or above to complie the src code.
+- You must use **standard C23 or above** to complie the src code.
 - For Linux, lookup __mingw_printf and replaced by printf<br>
 (Maybe I should add Marco to choose which one, but I used Windows only😜)<br>
 (printf on Windows can't print long double value)
