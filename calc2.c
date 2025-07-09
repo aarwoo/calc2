@@ -372,12 +372,22 @@ value try_define_func(char* expr,named_func* (*search_func)(char*)){
             char* func_expr = expr_copied + (eq - expr + 1);
             *(func_name + (lq - expr)) = '\0';
             //这么做,最多浪费54字节/次定义
-            set(
-                func_name,
-                func_user_def(vs,func_expr),
-                search_func
-            );
-            return bool_value(true);
+            func f = func_user_def(vs,func_expr);
+            switch(f){
+                case USER_DEF_FUNC:
+                     set(
+                         func_name,
+                         f,
+                         search_func
+                     );
+                     return bool_value(true);
+                case EMPTY_FUNC:
+                     free(expr_copied);
+                     return err_value("define function failed");
+                default:
+                     free(expr_copied);
+                     return err_value("undelare type of func when define function");
+            }
         }else{
             return err_value("copyied expr failed");
         }
