@@ -984,7 +984,7 @@ value func_calc(named_func* (*search_func)(char*),char* expr_begin,char* expr_en
                 }
             }
             *p = '\0';
-            named_func nf = search_func(name);
+            named_func* nf = search_func(name);
             value val = func_value(nf);
             auto_free_name(nf,name);
             return val;
