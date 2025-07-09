@@ -373,7 +373,7 @@ value try_define_func(char* expr,named_func* (*search_func)(char*)){
             *(func_name + (lq - expr)) = '\0';
             //这么做,最多浪费54字节/次定义
             func f = func_user_def(vs,func_expr);
-            switch(f){
+            switch(f.tp){
                 case USER_DEF_FUNC:
                      set(
                          func_name,
