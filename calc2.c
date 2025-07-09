@@ -20,6 +20,8 @@ typedef struct{
 }func;
 typedef struct{
     char* name;
+    //内置函数名必须为字符串常量(否则需手动管理内存)
+    //参见 update_func_name
     func f;
 }named_func;
 typedef struct{
@@ -59,6 +61,34 @@ typedef struct{
 }closure;
 
 lookup table = {.nf.name = nullptr,__func_empty__(.nf.f),.next = nullptr}; //初始化table
+void auto_free_name(named_func* nf,char* name){
+    //智能释放
+    if(nf -> name == name){
+        return;
+    }else{
+        free(name); 
+        return;
+    }
+}
+
+void update_func_name(named_func* nf,char* name){
+    if(nf -> name == name || nf -> f.tp == INIT_FUNC){
+        //内置函数(INIT_FUNC) nf-> name 默认为字符串常量, 无需释放
+        //可见 set_all_init_func
+        nf -> name = name;
+        return;
+    }else{
+        free(nf -> name); 
+        //如果是用户自定义的函数，这一部分同步释放了nf -> f.e
+        //可见 try_define_func
+        nf -> name = name;
+        return;
+    }
+}
+
+
+
+
 void print_func_direct(named_func nf){
     if(nf.name != nullptr){
         printf("\e[1;33m%s\e[0m",nf.name);
@@ -290,12 +320,14 @@ arg ill_arg(){
 void set(char* name,func f,named_func* (*search_func)(char*)){
     named_func* p = search_func(name);
     if(p -> f.tp == EMPTY_FUNC){
+        update_func_name(p,name);
         p -> f = f;
         printf("\e[1;35m[Define]\e[0m ");
         print_func(search_func,name);
     }else{
         printf("\e[1;2;35m[Define]\e[0m ");
         print_func(search_func,name);
+        update_func_name(p,name);
         p -> f = f;
         printf("\e[1;35m[Redefine]\e[0m ");
         print_func(search_func,name);
@@ -952,9 +984,9 @@ value func_calc(named_func* (*search_func)(char*),char* expr_begin,char* expr_en
                 }
             }
             *p = '\0';
-            //printf("'%s'",name);
-            value val = func_value(search_func(name));
-            free(name);
+            named_func nf = search_func(name);
+            value val = func_value(nf);
+            auto_free_name(nf,name);
             return val;
     }
 
